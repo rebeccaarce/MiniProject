@@ -1,5 +1,105 @@
-extends layout
+doctype html
+html(lang='en')
+	head
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js')
+		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+		title Temperature and Humidity
+	body
+		.navbar.navbar-default(role='navigation')
+			.container
+				.navbar-header
+					button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+						span.sr-only Toggle navigation
+						span.icon-bar
+						span.icon-bar
+						span.icon-bar
+					a.navbar-brand(href='#') Temperature and Humidity Tracker
+				.navbar-collapse.collapse
+					ul.nav.navbar-nav
+						if user
+							li(class=(title == 'Members' ? 'active' : ''))
+								a(href='/') Members
+						if !user
+							li(class=(title == 'Register' ? 'active' : ''))
+								a(href='/users/register') Register
+							li(class=(title == 'Login' ? 'active' : ''))
+								a(href='/users/login') Login
+					ul.nav.navbar-nav.navbar-right
+						if user
+							li
+								a(href='/users/logout') Logout
+			.container
+				canvas#myChart
+				canvas#myChart2
 
-block content
-	h1 Members Area
-	p Welcome to the Members Area
+
+
+		script.
+			let room1Temp = document.getElementById('myChart').getContext('2d');
+			// Global Options
+			Chart.defaults.global.defaultFontFamily = 'Lato';
+			Chart.defaults.global.defaultFontSize = 18;
+			Chart.defaults.global.defaultFontColor = '#777';
+			let massPopChart = new Chart(myChart, {
+			type: 'bar',
+			data: {
+			labels: ['8am', '11am', '2pm', '5pm', '8pm', '11pm'],
+			datasets: [{
+			label: 'Room 1 Temperature',
+
+
+
+			data: [
+			Math.floor(Math.random()*20+70),
+			Math.floor(Math.random()*20+70),
+			Math.floor(Math.random()*20+70),
+			Math.floor(Math.random()*20+70),
+			Math.floor(Math.random()*20+70),
+			Math.floor(Math.random()*20+70)
+			],
+			//backgroundColor:'green',
+			backgroundColor: [
+			'rgba(255, 99, 132, 0.6)',
+			'rgba(54, 162, 235, 0.6)',
+			'rgba(255, 206, 86, 0.6)',
+			'rgba(75, 192, 192, 0.6)',
+			'rgba(153, 102, 255, 0.6)',
+			'rgba(255, 159, 64, 0.6)',
+			'rgba(255, 99, 132, 0.6)'
+			],
+			borderWidth: 1,
+			borderColor: '#777',
+			}]
+			},
+			options: {
+				title: {
+					display: true,
+					text: 'Room 1 Temperature',
+					fontSize: 25
+				},
+
+				layout: {
+					padding: {
+					left: 50,
+					right: 0,
+					bottom: 0,
+					top: 0
+					}
+				},
+				tooltips: {
+					enabled: true
+				},
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true
+						}
+					}]
+				}
+			}
+
+
+			});
+
+			
+			
