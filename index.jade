@@ -17,8 +17,8 @@ html(lang='en')
 				.navbar-collapse.collapse
 					ul.nav.navbar-nav
 						if user
-							li(class=(title == 'Members' ? 'active' : ''))
-								a(href='/') Members
+							li(class=(title == 'Refresh' ? 'active' : ''))
+								a(href='/') Refresh
 						if !user
 							li(class=(title == 'Register' ? 'active' : ''))
 								a(href='/users/register') Register
@@ -45,59 +45,66 @@ html(lang='en')
 			Chart.defaults.global.defaultFontFamily = 'Lato';
 			Chart.defaults.global.defaultFontSize = 18;
 			Chart.defaults.global.defaultFontColor = '#777';
+
 			let room1T = new Chart(room1Temp, {
-			type: 'bar',
-			data: {
-			labels: ['8am', '11am', '2pm', '5pm', '8pm', '11pm'],
-			datasets: [{
-			label: 'Room 1 Temperature',
+				type: 'line',
+				data: {
+					labels: ['8am', '11am', '2pm', '5pm', '8pm', '11pm'],
+					datasets: [{
+						label: 'Room 1 Temperature',
 
-
-
-			data: [
-				Math.floor(Math.random()*20+70),
-				Math.floor(Math.random()*20+70),
-				Math.floor(Math.random()*20+70),
-				Math.floor(Math.random()*20+70),
-				Math.floor(Math.random()*20+70),
-				Math.floor(Math.random()*20+70)
-			],
-			backgroundColor:'red',
-			
-			borderWidth: 1,
-			borderColor: '#777',
-			}]
-			},
-			options: {
-				title: {
-					display: true,
-					text: 'Room 1 Temperature',
-					fontSize: 25
-				},
-
-				layout: {
-					padding: {
-					left: 50,
-					right: 0,
-					bottom: 0,
-					top: 0
-					}
-				},
-				tooltips: {
-					enabled: true
-				},
-				scales: {
-					yAxes: [{
-						ticks: {
-							beginAtZero: true,
-							suggestedMax: 100
-						}
+						data: [
+							Math.floor(Math.random()*20+70),
+							Math.floor(Math.random()*20+70),
+							Math.floor(Math.random()*20+70),
+							Math.floor(Math.random()*20+70),
+							Math.floor(Math.random()*20+70),
+							Math.floor(Math.random()*20+70)
+						],
+						fill: false,
+						borderColor: 'red'
 					}]
+				},
+
+				options: {
+					title: {
+						display: true,
+						text: 'Room 1 Temperature',
+						fontSize: 25
+					},
+
+					legend:{
+						display: false
+					},
+
+					layout: {
+						padding: {
+						left: 50,
+						right: 0,
+						bottom: 0,
+						top: 0
+						}
+					},
+
+					tooltips: {
+						enabled: true
+					},
+
+					scales: {
+						yAxes: [{
+							ticks: {
+								beginAtZero: true,
+								suggestedMax: 100
+							},
+							scaleLabel: {
+								display: true,
+								labelString: 'Temperature (C)'
+							}
+						}]
+					}
 				}
-			}
-
-
 			});
+
 
 
 		script.
@@ -105,164 +112,187 @@ html(lang='en')
 			let room1H = new Chart(room1Hum, {
 			type: 'bar',
 			data: {
-			labels: ['8am', '11am', '2pm', '5pm', '8pm', '11pm'],
-			datasets: [{
-			label: 'Room 1 Humidity',
+				labels: ['8am', '11am', '2pm', '5pm', '8pm', '11pm'],
+				datasets: [{
+					label: 'Room 1 Humidity',
 
-
-			data: [
-				Math.floor(Math.random()*10+40),
-				Math.floor(Math.random()*10+40),
-				Math.floor(Math.random()*10+40),
-				Math.floor(Math.random()*10+40),
-				Math.floor(Math.random()*10+40),
-				Math.floor(Math.random()*10+40)
-			],
-			backgroundColor:'blue',
-			
-			borderWidth: 1,
-			borderColor: '#777',
-			}]
+					data: [
+						Math.floor(Math.random()*10+40),
+						Math.floor(Math.random()*10+40),
+						Math.floor(Math.random()*10+40),
+						Math.floor(Math.random()*10+40),
+						Math.floor(Math.random()*10+40),
+						Math.floor(Math.random()*10+40)
+					],
+					
+					backgroundColor:'blue',
+					borderWidth: 1,
+					borderColor: 'black',
+				}]
 			},
-			options: {
-				title: {
-					display: true,
-					text: 'Room 1 Humidity',
-					fontSize: 25
-				},
 
-				layout: {
-					padding: {
-					left: 50,
-					right: 0,
-					bottom: 0,
-					top: 0
-					}
-				},
-				tooltips: {
-					enabled: true
-				},
-				scales: {
-					yAxes: [{
-						ticks: {
-							beginAtZero: true,
-							suggestedMax: 100
+				options: {
+					title: {
+						display: true,
+						text: 'Room 1 Humidity',
+						fontSize: 25
+					},
+
+					legend:{
+						display: false
+					},
+
+					layout: {
+						padding: {
+						left: 50,
+						right: 0,
+						bottom: 0,
+						top: 0
 						}
-					}]
+					},
+
+					tooltips: {
+						enabled: true
+					},
+
+					scales: {
+						yAxes: [{
+							ticks: {
+								beginAtZero: true,
+								suggestedMax: 100
+							},
+							scaleLabel: {
+									display: true,
+									labelString: 'Humidity (%)'
+							}
+						}],
+					}
 				}
-			}
-
-
 			});
+
 
 
 		script.
 			let room2Temp = document.getElementById('room2Temp').getContext('2d');
 			let room2T = new Chart(room2Temp, {
-			type: 'bar',
-			data: {
-			labels: ['8am', '11am', '2pm', '5pm', '8pm', '11pm'],
-			datasets: [{
-			label: 'Room 2 Temperature',
+				type: 'line',
+				data: {
+					labels: ['8am', '11am', '2pm', '5pm', '8pm', '11pm'],
+					datasets: [{
+						label: 'Room 2 Temperature',
 
-
-			data: [
-				Math.floor(Math.random()*20+70),
-				Math.floor(Math.random()*20+70),
-				Math.floor(Math.random()*20+70),
-				Math.floor(Math.random()*20+70),
-				Math.floor(Math.random()*20+70),
-				Math.floor(Math.random()*20+70)
-			],
-			backgroundColor:'red',
-			
-			borderWidth: 1,
-			borderColor: '#777',
-			}]
-			},
-			options: {
-				title: {
-					display: true,
-					text: 'Room 2 Temperature',
-					fontSize: 25
-				},
-
-				layout: {
-					padding: {
-					left: 50,
-					right: 0,
-					bottom: 0,
-					top: 0
-					}
-				},
-				tooltips: {
-					enabled: true
-				},
-				scales: {
-					yAxes: [{
-						ticks: {
-							beginAtZero: true,
-							suggestedMax: 100
-						}
+						data: [
+							Math.floor(Math.random()*20+70),
+							Math.floor(Math.random()*20+70),
+							Math.floor(Math.random()*20+70),
+							Math.floor(Math.random()*20+70),
+							Math.floor(Math.random()*20+70),
+							Math.floor(Math.random()*20+70)
+						],
+						fill: false,
+						borderColor: 'red'
 					}]
+				},
+
+				options: {
+					title: {
+						display: true,
+						text: 'Room 2 Temperature',
+						fontSize: 25
+					},
+
+					legend:{
+						display: false
+					},
+
+					layout: {
+						padding: {
+						left: 50,
+						right: 0,
+						bottom: 0,
+						top: 0
+						}
+					},
+
+					tooltips: {
+						enabled: true
+					},
+
+					scales: {
+						yAxes: [{
+							ticks: {
+								beginAtZero: true,
+								suggestedMax: 100
+							},
+							scaleLabel: {
+								display: true,
+								labelString: 'Temperature (C)'
+							}
+						}],
+					}
 				}
-			}
-
-
 			});
+
 
 
 		script.
 			let room2Hum = document.getElementById('room2Hum').getContext('2d');
 			let room2H = new Chart(room2Hum, {
-			type: 'bar',
-			data: {
-			labels: ['8am', '11am', '2pm', '5pm', '8pm', '11pm'],
-			datasets: [{
-			label: 'Room 2 Humidity',
+				type: 'bar',
+				data: {
+					labels: ['8am', '11am', '2pm', '5pm', '8pm', '11pm'],
+					datasets: [{
+						label: 'Room 2 Humidity',
 
-
-			data: [
-				Math.floor(Math.random()*10+40),
-				Math.floor(Math.random()*10+40),
-				Math.floor(Math.random()*10+40),
-				Math.floor(Math.random()*10+40),
-				Math.floor(Math.random()*10+40),
-				Math.floor(Math.random()*10+40)
-			],
-			backgroundColor:'blue',
-			
-			borderWidth: 1,
-			borderColor: '#777',
-			}]
-			},
-			options: {
-				title: {
-					display: true,
-					text: 'Room 2 Humidity',
-					fontSize: 25
-				},
-
-				layout: {
-					padding: {
-					left: 50,
-					right: 0,
-					bottom: 0,
-					top: 0
-					}
-				},
-				tooltips: {
-					enabled: true
-				},
-				scales: {
-					yAxes: [{
-						ticks: {
-							beginAtZero: true,
-							suggestedMax: 100
-						}
+						data: [
+							Math.floor(Math.random()*10+40),
+							Math.floor(Math.random()*10+40),
+							Math.floor(Math.random()*10+40),
+							Math.floor(Math.random()*10+40),
+							Math.floor(Math.random()*10+40),
+							Math.floor(Math.random()*10+40)
+						],
+						backgroundColor:'blue',
+						borderWidth: 1,
+						borderColor: 'black',
 					}]
+				},
+
+				options: {
+					title: {
+						display: true,
+						text: 'Room 2 Humidity',
+						fontSize: 25
+					},
+
+					legend:{
+						display: false
+					},
+
+					layout: {
+						padding: {
+						left: 50,
+						right: 0,
+						bottom: 0,
+						top: 0
+						}
+					},
+
+					tooltips: {
+						enabled: true
+					},
+
+					scales: {
+						yAxes: [{
+							ticks: {
+								beginAtZero: true,
+								suggestedMax: 100
+							},
+							scaleLabel: {
+								display: true,
+								labelString: 'Humidity (%)'
+							}
+						}],
+					}
 				}
-			}
-
-
 			});
