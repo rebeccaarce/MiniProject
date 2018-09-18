@@ -29,18 +29,23 @@ html(lang='en')
 							li
 								a(href='/users/logout') Logout
 			.container
-				canvas#myChart
-				canvas#myChart2
+				canvas#room1Temp
+			.container
+				canvas#room1Hum
+			.container
+				canvas#room2Temp
+			.container
+				canvas#room2Hum
 
 
 
 		script.
-			let room1Temp = document.getElementById('myChart').getContext('2d');
+			let room1Temp = document.getElementById('room1Temp').getContext('2d');
 			// Global Options
 			Chart.defaults.global.defaultFontFamily = 'Lato';
 			Chart.defaults.global.defaultFontSize = 18;
 			Chart.defaults.global.defaultFontColor = '#777';
-			let massPopChart = new Chart(myChart, {
+			let room1T = new Chart(room1Temp, {
 			type: 'bar',
 			data: {
 			labels: ['8am', '11am', '2pm', '5pm', '8pm', '11pm'],
@@ -50,23 +55,15 @@ html(lang='en')
 
 
 			data: [
-			Math.floor(Math.random()*20+70),
-			Math.floor(Math.random()*20+70),
-			Math.floor(Math.random()*20+70),
-			Math.floor(Math.random()*20+70),
-			Math.floor(Math.random()*20+70),
-			Math.floor(Math.random()*20+70)
+				Math.floor(Math.random()*20+70),
+				Math.floor(Math.random()*20+70),
+				Math.floor(Math.random()*20+70),
+				Math.floor(Math.random()*20+70),
+				Math.floor(Math.random()*20+70),
+				Math.floor(Math.random()*20+70)
 			],
-			//backgroundColor:'green',
-			backgroundColor: [
-			'rgba(255, 99, 132, 0.6)',
-			'rgba(54, 162, 235, 0.6)',
-			'rgba(255, 206, 86, 0.6)',
-			'rgba(75, 192, 192, 0.6)',
-			'rgba(153, 102, 255, 0.6)',
-			'rgba(255, 159, 64, 0.6)',
-			'rgba(255, 99, 132, 0.6)'
-			],
+			backgroundColor:'red',
+			
 			borderWidth: 1,
 			borderColor: '#777',
 			}]
@@ -92,7 +89,8 @@ html(lang='en')
 				scales: {
 					yAxes: [{
 						ticks: {
-							beginAtZero: true
+							beginAtZero: true,
+							suggestedMax: 100
 						}
 					}]
 				}
@@ -101,5 +99,170 @@ html(lang='en')
 
 			});
 
+
+		script.
+			let room1Hum = document.getElementById('room1Hum').getContext('2d');
+			let room1H = new Chart(room1Hum, {
+			type: 'bar',
+			data: {
+			labels: ['8am', '11am', '2pm', '5pm', '8pm', '11pm'],
+			datasets: [{
+			label: 'Room 1 Humidity',
+
+
+			data: [
+				Math.floor(Math.random()*10+40),
+				Math.floor(Math.random()*10+40),
+				Math.floor(Math.random()*10+40),
+				Math.floor(Math.random()*10+40),
+				Math.floor(Math.random()*10+40),
+				Math.floor(Math.random()*10+40)
+			],
+			backgroundColor:'blue',
 			
+			borderWidth: 1,
+			borderColor: '#777',
+			}]
+			},
+			options: {
+				title: {
+					display: true,
+					text: 'Room 1 Humidity',
+					fontSize: 25
+				},
+
+				layout: {
+					padding: {
+					left: 50,
+					right: 0,
+					bottom: 0,
+					top: 0
+					}
+				},
+				tooltips: {
+					enabled: true
+				},
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true,
+							suggestedMax: 100
+						}
+					}]
+				}
+			}
+
+
+			});
+
+
+		script.
+			let room2Temp = document.getElementById('room2Temp').getContext('2d');
+			let room2T = new Chart(room2Temp, {
+			type: 'bar',
+			data: {
+			labels: ['8am', '11am', '2pm', '5pm', '8pm', '11pm'],
+			datasets: [{
+			label: 'Room 2 Temperature',
+
+
+			data: [
+				Math.floor(Math.random()*20+70),
+				Math.floor(Math.random()*20+70),
+				Math.floor(Math.random()*20+70),
+				Math.floor(Math.random()*20+70),
+				Math.floor(Math.random()*20+70),
+				Math.floor(Math.random()*20+70)
+			],
+			backgroundColor:'red',
 			
+			borderWidth: 1,
+			borderColor: '#777',
+			}]
+			},
+			options: {
+				title: {
+					display: true,
+					text: 'Room 2 Temperature',
+					fontSize: 25
+				},
+
+				layout: {
+					padding: {
+					left: 50,
+					right: 0,
+					bottom: 0,
+					top: 0
+					}
+				},
+				tooltips: {
+					enabled: true
+				},
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true,
+							suggestedMax: 100
+						}
+					}]
+				}
+			}
+
+
+			});
+
+
+		script.
+			let room2Hum = document.getElementById('room2Hum').getContext('2d');
+			let room2H = new Chart(room2Hum, {
+			type: 'bar',
+			data: {
+			labels: ['8am', '11am', '2pm', '5pm', '8pm', '11pm'],
+			datasets: [{
+			label: 'Room 2 Humidity',
+
+
+			data: [
+				Math.floor(Math.random()*10+40),
+				Math.floor(Math.random()*10+40),
+				Math.floor(Math.random()*10+40),
+				Math.floor(Math.random()*10+40),
+				Math.floor(Math.random()*10+40),
+				Math.floor(Math.random()*10+40)
+			],
+			backgroundColor:'blue',
+			
+			borderWidth: 1,
+			borderColor: '#777',
+			}]
+			},
+			options: {
+				title: {
+					display: true,
+					text: 'Room 2 Humidity',
+					fontSize: 25
+				},
+
+				layout: {
+					padding: {
+					left: 50,
+					right: 0,
+					bottom: 0,
+					top: 0
+					}
+				},
+				tooltips: {
+					enabled: true
+				},
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true,
+							suggestedMax: 100
+						}
+					}]
+				}
+			}
+
+
+			});
