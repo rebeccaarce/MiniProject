@@ -16,9 +16,6 @@ html(lang='en')
 					a.navbar-brand(href='#') Temperature and Humidity Tracker
 				.navbar-collapse.collapse
 					ul.nav.navbar-nav
-						if user
-							li(class=(title == 'Refresh' ? 'active' : ''))
-								a(href='/') Refresh
 						if !user
 							li(class=(title == 'Register' ? 'active' : ''))
 								a(href='/users/register') Register
